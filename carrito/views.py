@@ -54,7 +54,15 @@ def carrito_prod(request, producto_id=None):
     else:
         return JsonResponse({"error": "Método HTTP no permitido"}, status=405)
 
-
+def remove_duplicates():
+    global favoritos
+    unique_favoritos = []
+    ids_set = set()
+    for producto in favoritos:
+        if producto["id"] not in ids_set:
+            unique_favoritos.append(producto)
+            ids_set.add(producto["id"])
+    favoritos = unique_favoritos
 
 @csrf_exempt
 def favoritos_prod(request, favoritos_id=None):
@@ -62,19 +70,15 @@ def favoritos_prod(request, favoritos_id=None):
 
     # POST
     if request.method == 'POST':
-        data = json.loads(request.body)
-    # Verificar si el cuerpo de la solicitud contiene solo un objeto JSON
-        if isinstance(data, dict):
-            # Verificar si el producto ya está en favoritos
-            if data["id"] not in [producto["id"] for producto in favoritos]:
-                # Si el producto no está en favoritos, agregarlo
-                favoritos.append(data)
-                return JsonResponse({"message": "Producto agregado a favoritos correctamente"}, status=200)
-            else:
-                return JsonResponse({"error": "El producto ya está en favoritos"}, status=400)
+        datafav = json.loads(request.body)
+    # Verificar si el producto ya está en favoritos
+        if datafav["id"] not in [producto["id"] for producto in favoritos]:
+        # Si el producto no está en favoritos, agregarlo
+            favoritos.append(datafav)
+            remove_duplicates()  # Llamar a la función para eliminar duplicados
+            return JsonResponse({"message": "Producto agregado a favoritos correctamente"}, status=200)
         else:
-            return JsonResponse({"error": "El cuerpo de la solicitud debe contener solo un objeto JSON"}, status=400)
-
+            return JsonResponse({"error": "El producto ya está en favoritos"}, status=400)
     # GET
     elif request.method == 'GET':
         # Convertir el conjunto favoritos a una lista antes de devolverlo como JSON
