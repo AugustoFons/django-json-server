@@ -67,14 +67,16 @@ def remove_duplicates():
 @csrf_exempt
 def favoritos_prod(request, favoritos_id=None):
     global favoritos
+    remove_duplicates()
     # POST
     if request.method == 'POST':
         datafav = json.loads(request.body)
+        remove_duplicates()
     # Verificar si el producto ya está en favoritos
         if datafav["id"] not in [producto["id"] for producto in favoritos]:
         # Si el producto no está en favoritos, agregarlo
             favoritos.append(datafav)
-            remove_duplicates()  # Llamar a la función para eliminar duplicados
+            # Llamar a la función para eliminar duplicados
             return JsonResponse({"message": "Producto agregado a favoritos correctamente"}, status=200)
         else:
             return JsonResponse({"error": "El producto ya está en favoritos"}, status=400)
