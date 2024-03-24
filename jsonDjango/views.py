@@ -147,7 +147,7 @@ def index(request):
             "discount": "30% OFF"
         }
     ]
-    urls = {
+    ENDPOINTS = {
         'productosSmartphone': '/productosSmartphone/',
         'productosTvs': '/productosTvs/',
         'productosAudio': '/productosAudio/',
@@ -168,4 +168,4 @@ def index(request):
     elif categoria == 'productosDestacados':
         return JsonResponse(productosDestacados, safe=False)
     else:
-        return JsonResponse(urls, safe=False)
+        return JsonResponse(ENDPOINTS, safe=True)
