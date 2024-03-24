@@ -55,22 +55,27 @@ def carrito_prod(request, producto_id=None):
         return JsonResponse({"error": "Método HTTP no permitido"}, status=405)
 
 
+
 @csrf_exempt
 def favoritos_prod(request, favoritos_id=None):
     global favoritos
 
-    #POST
+    # POST
     if request.method == 'POST':
         datafav = json.loads(request.body)
-        # Verificar si el producto ya está en favoritos ya que los productos smartphones se duplicaban
-        if any(producto["id"] == datafav["id"] for producto in favoritos):
+    # Verificar si el producto ya está en favoritos
+        if datafav["id"] not in [producto["id"] for producto in favoritos]:
+            # Si el producto no está en favoritos, agregarlo
+            favoritos.append(datafav)
+            return JsonResponse({"message": "Producto agregado a favoritos correctamente"}, status=200)
+        else:
             return JsonResponse({"error": "El producto ya está en favoritos"}, status=400)
-        # Si el producto no está en favoritos, agregarlo
-        favoritos.append(datafav)
-        return JsonResponse({"message": "Producto agregado a favoritos correctamente"}, status=200)
-    #GET
+
+    # GET
     elif request.method == 'GET':
+        # Convertir el conjunto favoritos a una lista antes de devolverlo como JSON
         return JsonResponse(favoritos, safe=False)
+
     # DELETE (eliminar todo o un producto específico)
     elif request.method == 'DELETE':
         if favoritos_id is not None:
