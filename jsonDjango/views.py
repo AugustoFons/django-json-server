@@ -147,13 +147,16 @@ def index(request):
             "discount": "30% OFF"
         }
     ]
-    urls = {
+    ENDPOINTS = {
         'productosSmartphone': '/productosSmartphone/',
         'productosTvs': '/productosTvs/',
         'productosAudio': '/productosAudio/',
         'productosDestacados': '/productosDestacados/',
         'carrito': '/carrito/',
-        'favoritos': '/favoritos/'
+        'favoritos': '/favoritos/',
+        'README': 'Esta Web desarrollada en Python con Django actua como un servidor Json. Lo cree con el fin de simular una base de datos para un proyecto de un e-commerce en React que tuve que realizar en 2022. para un trabajo de estudio. En su momento habiamos hecho con mis compañeros un json-server en Node pero dado que los tiempos de carga del servidor eran elevados y no tenia muchas opciones para hacer un deploy gratuito, intente hacer el servidor con Django manteniendo el fin de que el servidor sea un json, lo cual fue mucho más complejo pero pude hacer el deploy facilmente en vercel mejorando los tiempos de carga del servidor. La web que consume el servidor es la siguiente https://storepineapple-ecommerce.vercel.app/ y tiene como repositorio https://github.com/AugustoFons/Proyecto-Final-React . Los ENDPOINTS, todos permiten solicitudes GET, el del carrito tambien permite solicitudes POST, PUT y DELETE, y el de favoritos tambien permite POST y DELETE. Si se descarga el proyecto instalar las dependencias del archivo requirements.txt, este tiene versiones algo más antiguas ya que son las que admite vercel para el deploy pero se pueden instalar dependencias más recientes para trabajar localmente.',
+        'Proyecto': 'https://github.com/AugustoFons/django-json-server Sitio desarrollado por Augusto Fons'
+    
     }
 
     if categoria == 'productosSmartphone':
@@ -165,4 +168,4 @@ def index(request):
     elif categoria == 'productosDestacados':
         return JsonResponse(productosDestacados, safe=False)
     else:
-        return JsonResponse(urls, safe=False)
+        return JsonResponse(ENDPOINTS, safe=True)
