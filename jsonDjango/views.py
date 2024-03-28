@@ -92,7 +92,7 @@ def index(request):
         },
         {
             "id": 10,
-            "img": "https://www.oscarbarbieri.com/pub/media/catalog/product/cache/7baadf0dec41407c7702efdbff940ecb/0/8/085275_3.jpg",
+            "img": "https://www.aiwaelectronics.com.ar/fileserver/products/AW-P450D-SN/img/1.webp",
             "titulo": "Parlante Portatil Aiwa",
             "descripcion": "Parlante Portatil Aiwa AW-P450D. Potencia de 1200W",
             "caracteristicas": "900 W. PMPO, Woofer 6.5, Luces RGB, CONEXIÓN BT/ USB/SD/MIC/AUX, Radio FM, Batería recargable, Dsiplay LED",
@@ -101,7 +101,7 @@ def index(request):
         },
         {
             "id": 11,
-            "img": "https://www.amyro.com.ar/wp-content/uploads/2022/05/AW-T2050R_03-600x600.jpg",
+            "img": "https://www.aiwaelectronics.com.ar/fileserver/products/AW-T604F/img/1.webp",
             "titulo": "Parlante Bluetooth Aiwa",
             "descripcion": "Parlante Bluetooth Carry-On Aiwa con Microfono",
             "caracteristicas": "Parlante portatil, 20 hs de reproduccion, Solido y resistente al agua IPX7. Funcion de bateria incorporada. Carga a traves de dispositivos USB. Entrada de audio. Funcion que evita los cortes. Reproduce a un volumen alto sin distorsion. Bluetooth 5.0. Hasta 20 m de alcance inalambrico. Sonido estereo. Las luces LED multicolor. Carga completa de bateria: h/6 horas. Conexion de audio: entrada 3.5.",
@@ -110,7 +110,7 @@ def index(request):
         },
         {
             "id": 12,
-            "img": "https://masonlineprod.vtexassets.com/arquivos/ids/302108-800-auto?v=638315337829570000&width=800&height=auto&aspect=true",
+            "img": "https://www.aiwaelectronics.com.ar/fileserver/products/AW-P2016A/img/1.webp",
             "titulo": "Parlante Aiwa Infinit",
             "descripcion": "Parlante Bluetooth Aiwa AW-T2022.",
             "caracteristicas": "¡Llevá la fiesta a donde sea que vayas! Con la Correa de fácil transporte podés moverte con tu música de la terraza, a la playa o en donde mas gustes. Práctica, liviana y portatil, con un sonido potente. Sus deslumbrantes efectos de luces le darán ese toque mágico a todos tus momentos..",
